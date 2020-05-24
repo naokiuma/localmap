@@ -336,6 +336,9 @@ form .submit-btn {
   color: white; }
   form .submit-btn:hover {
     background-color: #3bf0bd; }
+  @media screen and (max-width: 770px) {
+    form .submit-btn {
+      font-size: 16px; } }
 
 #wrapper {
   display: flex;

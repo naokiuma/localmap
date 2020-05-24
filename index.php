@@ -7,15 +7,12 @@ if($_POST){
     $lat = $_POST['lat'];
     $lng = $_POST['lng'];
     $username = $_POST['username'];
-    if(empty($username)){
-        $username = "名無しさんです";
-    }
+    if(empty($username)) $username = "名無しさん";
     debug("名前だ");
     debug($username);
-    if(!$abouturl)$abouturl = "index.php";
+    if(empty($abouturl)) $abouturl = "index.php";
     $content = $_POST['content'];
     $abouturl = $_POST['abouturl'];
-    if($abouturl === " ")$abouturl = "index.php";
     $category_id = $_POST['category_id'];
     debug($lat);
     debug($lng);
@@ -153,11 +150,11 @@ if($_POST){
             <div>投稿者名</div>
             <input name="username" type="text" value="名無しさん">
             <div>内容<span class="need">※必須</span></div>
-            <textarea name="content" id="" cols="60" rows="7" placeholder="場所の名前や、良いところを入力" required></textarea>
+            <textarea class="check" name="content" id="" cols="60" rows="7" placeholder="場所の名前や、良いところを入力" required></textarea>
             <div>URL</div>
             <input name="abouturl" type="url" placeholder="http">
             <br>
-            <input type="submit" class="submit-btn" value="投稿！">
+            <button type="submit" class="submit-btn">投稿！</button>
 
         </form>
         
@@ -179,8 +176,8 @@ if($_POST){
     //phpから受け取った取得データ
     
     var allmarker = <?php echo $search_rst; ?>;
-    console.log("受け取ったデータ");
-    console.log(allmarker);
+    //console.log("受け取ったデータ");
+    //console.log(allmarker);
     
     var map;
     var marker = [];//既存マーカー
@@ -188,18 +185,19 @@ if($_POST){
     var newmarker;//新規マーカー
     var infoWindow = [];
     var nowpositon;//現在地のウインドウ
-    var center =  {lat: 35.680492, lng: 139.765135};
+    var center =  {lat: 35.68151827504024, lng: 139.76683417941095};
 
     //smooth scroll
     var scroll = new SmoothScroll('a[href*="#"]');
 
-    //クリックによる使い方の変化
+    //クリックによる使い方toggle
     $('.js-howto-show').on("click", function() {
         $('.about').slideToggle();
     });
     </script> 
 
-    <script type="text/javascript" src="./js/map.js"></script>
+    <script type="text/javascript" src="./js/form.js"></script>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdMGovP86OVf0rhbzezWKGV5Z32TMxt3Y&callback=initMap" async defer></script>
 
     
