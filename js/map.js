@@ -6,8 +6,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
     center: center,
     zoom: 19,
-    gestureHandling:"greedy",
-    fullscreenControl:true        
+    gestureHandling:"greedy"
     });
  
 //既存マーカー一覧を表示
