@@ -32,7 +32,7 @@ for(var i = 0;i < allmarker.length; i++){
         <div class="marker-username">${allmarker[i]['username']}</div>
         <div class="marker-content">${allmarker[i]['content']}
         </div><br>
-        <a href="${allmarker[i]['abouturl']}" class="marker-link">リンク先</a>
+        <a href="${allmarker[i]['abouturl']}" class="marker-link">${allmarker[i]['abouturl']}</a>
         `
         
         //'<div><a href="">' + allmarker[i]['content'] + '</a></div>'
@@ -45,7 +45,7 @@ for(var i = 0;i < allmarker.length; i++){
     // マーカーにクリックイベントを追加
     function markerEvent(i) {
         marker[i].addListener('click', function() { // イベント発火
-        console.log("発火");
+        //console.log("発火");
             if(state[i] === "close"){
                 infoWindow[i].open(map, marker[i]); // 吹き出しの表示
                 state[i] = "open";

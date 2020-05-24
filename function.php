@@ -7,6 +7,12 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 //--------------------------------------------
+//エスケープ
+function h($s) {
+  return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
+  }
+
+//--------------------------------------------
 //デバッグフラグ
 $debug_flg = true;
 //デバッグログ関数

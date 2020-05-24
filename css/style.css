@@ -345,6 +345,11 @@ form .submit-btn {
   flex-direction: column;
   min-height: 100vh; }
 
+.twitter-wrapper {
+  height: 50px;
+  margin: auto;
+  text-align: center; }
+
 footer {
   height: 40px;
   width: 100%;

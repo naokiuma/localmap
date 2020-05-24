@@ -8,10 +8,9 @@ if($_POST){
     $lng = $_POST['lng'];
     $username = $_POST['username'];
     if(empty($username)) $username = "名無しさん";
-    debug("名前だ");
-    debug($username);
-    if(empty($abouturl)) $abouturl = "index.php";
+    //debug($username);
     $content = $_POST['content'];
+    if(empty($abouturl)) $abouturl = "";
     $abouturl = $_POST['abouturl'];
     $category_id = $_POST['category_id'];
     debug($lat);
@@ -54,9 +53,9 @@ if($_POST){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>ご近所LiKEマップ</title>
-    <meta name="description" content="近所のお気に入りの場所を投稿、共有するサービスです。">
-    <meta name="keywords" content="外食,テイクアウト,景色,近所,遊び場,公園,お気に入り,LIKE,地図">
+    <title>ご近所LIKEマップ</title>
+    <meta name="description" content="「ご近所LIKEマップ」は近所のお気に入りの場所を投稿、共有するサービスです。">
+    <meta name="keywords" content="外食,テイクアウト,景色,近所,遊び場,公園,お気に入り,LIKE,地図,Googlemap">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -69,7 +68,7 @@ if($_POST){
 <div id="wrapper">
 
 <header>
-    <h1><a href="">ご近所LiKEマップ</a></h1>
+    <h1><a href="">ご近所LIKEマップ</a></h1>
     <nav>
         <a href="#thelocalmap">マップへ</a>
         <a href="#description">本サービスについて</a>
@@ -78,7 +77,7 @@ if($_POST){
 
 
 <section class="hero">
-    <h2>みんなの好きな場所をシェアしよう。</h2>
+    <h2>好きな場所をシェアしよう。</h2>
     <div class="hero-wrapper">
         <div>
             <img class="hero-map" src="./img/map.png" alt="">
@@ -91,7 +90,7 @@ if($_POST){
 </section>
 
 <div class="description" id="description">
-　<h2 class="read-text">好きな"場所"をシェアし、応援する。</h2>
+　<h2 class="read-text">みんなで作るLIKE地図</h2>
     <p>美味しいご飯やテイクアウトのあるお店、<br class="sp_br">たくさんの猫がいる公園。<br>
     街がよく見下ろせる場所、<br class="sp_br">風が気持ちいい場所、空が広い場所。<br>
     強い対戦相手が見つかるゲーセン、<br class="sp_br">笑いの絶えないボルダリングジム。</p>
@@ -107,7 +106,7 @@ if($_POST){
         <div class="img-box"><img src="./img/hero-f.jpg" alt=""></div>
 </div>
 
-<h3 class="js-howto-show howto">使い方を見る。</h3>
+<h3 class="js-howto-show howto">使い方</h3>
 
 <section class="about">
     <div class="about-wrapper">
@@ -131,7 +130,7 @@ if($_POST){
 
 <div class="space"></div>
 
-<h2 class="map-read-text" id="thelocalmap">みんなで作る地図</h2>
+<h2 class="map-read-text" id="thelocalmap">みんなの地図</h2>
 <p class="content-text">地図をクリックし、「内容」を入力し<br class="sp_br">「登録！」ボタンで地図に情報を登録できます。</p>
 <div class="topmap" id="map"></div>
 <button class="nowpos js-getnow">現在地に移動</button>
@@ -165,16 +164,17 @@ if($_POST){
 <div class="space"></div>
 
 
+<div class="twitter-wrapper">
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-hashtags="locallikemap" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+
 <footer>
     <div class="copy">Copyright © ご近所LiKEマップ. All rights reserved </div>
 </footer>
 
-
-
     <script>
-
-    //phpから受け取った取得データ
-    
+    //phpから受け取ったDBデータ
     var allmarker = <?php echo $search_rst; ?>;
     //console.log("受け取ったデータ");
     //console.log(allmarker);
@@ -195,6 +195,7 @@ if($_POST){
         $('.about').slideToggle();
     });
     </script> 
+
 
     <script type="text/javascript" src="./js/map.js"></script>
 
