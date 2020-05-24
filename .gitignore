@@ -1,0 +1,5 @@
+package-lock.json
+package.json
+php.log
+/node_modules
+/scss
