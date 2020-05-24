@@ -1,5 +1,6 @@
 <?php
 
+require('db.php');
 require('function.php');
 
 if($_POST){
@@ -70,8 +71,7 @@ if($_POST){
 <header>
     <h1><a href="">ご近所LiKEマップ</a></h1>
     <nav>
-        <a href="">地図を見る</a>
-        <a href="">地図に登録する</a>
+        <a href="#thelocalmap">マップへ</a>
         <a href="#description">本サービスについて</a>
     </nav>
 </header>
@@ -131,7 +131,7 @@ if($_POST){
 
 <div class="space"></div>
 
-<h2 class="map-read-text">みんなで作る地図</h2>
+<h2 class="map-read-text" id="thelocalmap">みんなで作る地図</h2>
 <p class="content-text">地図をクリックし、「内容」を入力し<br class="sp_br">「登録！」ボタンで地図に情報を登録できます。</p>
 <div class="topmap" id="map"></div>
 <button class="nowpos js-getnow">現在地に移動</button>
