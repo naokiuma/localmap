@@ -5,7 +5,8 @@ function initMap() {
     //console.log("始める");
     map = new google.maps.Map(document.getElementById('map'), {
     center: center,
-    zoom: 16,
+    zoom: 18,
+    gestureHandling:greedy,
     fullscreenControl:true        
     });
  

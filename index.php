@@ -7,6 +7,9 @@ if($_POST){
     $lat = $_POST['lat'];
     $lng = $_POST['lng'];
     $username = $_POST['username'];
+    if(empty($username)){
+        $username = "名無しさんです";
+    }
     debug("名前だ");
     debug($username);
     if(!$abouturl)$abouturl = "index.php";
@@ -65,7 +68,7 @@ if($_POST){
 
 </head>
 
-<body>
+<body ontouchstart="">
 <div id="wrapper">
 
 <header>
