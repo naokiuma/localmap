@@ -91,7 +91,7 @@ if($_POST){
 </section>
 
 <div class="description" id="description">
-　<h2 class="read-text">好きな"場所"を共有しよう。</h2>
+　<h2 class="read-text">好きな"場所"をシェアし、応援する。</h2>
     <p>美味しいご飯やテイクアウトのあるお店、<br class="sp_br">たくさんの猫がいる公園。<br>
     街がよく見下ろせる場所、<br class="sp_br">風が気持ちいい場所、空が広い場所。<br>
     強い対戦相手が見つかるゲーセン、<br class="sp_br">笑いの絶えないボルダリングジム。</p>
