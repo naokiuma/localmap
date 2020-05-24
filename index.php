@@ -197,10 +197,7 @@ if($_POST){
     </script> 
 
     <script type="text/javascript" src="./js/map.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO9WBlc7QjqTDCTmAa-OLd3uOgWK6oLJQ&callback=initMap" async defer></script>
-
-    
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdMGovP86OVf0rhbzezWKGV5Z32TMxt3Y&callback=initMap" async defer></script>
 
     
 </div>
