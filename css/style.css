@@ -367,7 +367,8 @@ footer {
 
 .hide {
   /*formを隠す*/
-  display: none; }
+  opacity: 0;
+  height: 0; }
 
 .space {
   border-top: 3px solid #71c2ca;

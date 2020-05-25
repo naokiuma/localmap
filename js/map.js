@@ -72,11 +72,11 @@ map.addListener('click',function (e){
     });
     var response = newmarker.getPosition();//markerの場所を取得
     console.log(response.lat());
-    document.getElementById('getlat').textContent = response.lat();
+    //document.getElementById('getlat').textContent = response.lat();
     document.getElementsByClassName('lat_val')[0].defaultValue = response.lat();
 
     console.log(response.lng());
-    document.getElementById('getlng').textContent = response.lng();
+    //document.getElementById('getlng').textContent = response.lng();
     document.getElementsByClassName('lng_val')[0].defaultValue = response.lng();
 
 
