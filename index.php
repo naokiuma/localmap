@@ -142,9 +142,9 @@ if($_POST){
         <form action="" method="post">
             <h3 class="read-text">好きな場所を投稿しよう。</h3><br>
             <div>緯度<span id="getlat" class="getlat-num"></span><span class="need">※必須</span></div>
-            <input class="lat_val" type="number" name="lat" value="" required>
+            <input class="lat_val" type="text" name="lat" value="" required>
             <div>経度：<span id="getlng" class="getlng-num"></span><span class="need">※必須</span></div>
-            <input class="lng_val" type="number" name="lng" value="" required><br>
+            <input class="lng_val" type="text" name="lng" value="" required><br>
             <input type="radio" class="category_btn" name="category_id" value="1" required checked>のんびり
             <input type="radio" class="category_btn" name="category_id" value="2">たべもの
             <input type="radio" class="category_btn" name="category_id" value="3">あそぶ
