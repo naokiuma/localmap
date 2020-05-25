@@ -176,6 +176,16 @@ if($_POST){
 
 <div class="twitter-wrapper">
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-hashtags="locallikemap" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<br>
+<span style="font-size:10px">よかったらシェアしていただけると嬉しいです！</span>
+</div>
+
+<div class="news">
+<h4>NEWS</h4>
+    <ul>
+        <li><span>2020/05/24</span> サービスを公開しました。</li>
+        <li><span>2020/05/23</span> 「現在地を取得」した際に人型マーカーが出るようにしました。</li>
+    </ul>
 </div>
 
 
@@ -193,6 +203,7 @@ if($_POST){
     var marker = [];//既存マーカー
     var state = [];
     var newmarker;//新規マーカー
+    var nowmarker;//現在地マーカー
     var infoWindow = [];
     var nowpositon;//現在地のウインドウ
     var center =  {lat: 35.68151827504024, lng: 139.76683417941095};

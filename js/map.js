@@ -54,9 +54,9 @@ for(var i = 0;i < allmarker.length; i++){
                 state[i] = "close";
             }
         });
-
     }
 }
+
 
 //マーカー追加メソッド
 map.addListener('click',function (e){
@@ -70,15 +70,13 @@ map.addListener('click',function (e){
         icon: "https://maps.google.com/mapfiles/ms/micons/red.png",
         animation:google.maps.Animation.DROP
     });
-    var response = newmarker.getPosition();//markerの場所を取得
+    var response = newmarker.getPosition();//markerの場所を取得。フォームに設定
     console.log(response.lat());
     //document.getElementById('getlat').textContent = response.lat();
     document.getElementsByClassName('lat_val')[0].defaultValue = response.lat();
-
     console.log(response.lng());
     //document.getElementById('getlng').textContent = response.lng();
     document.getElementsByClassName('lng_val')[0].defaultValue = response.lng();
-
 
     newmarker.addListener('mouseover',function(){
         this.setAnimation(google.maps.Animation.BOUNCE);
@@ -95,7 +93,7 @@ map.addListener('click',function (e){
 });
 
 $('.js-getnow').on('click',function(){
-    console.log("押した");
+    console.log("現在地取得");
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function(position) { 
             //position から緯度経度（ユーザーの位置）のオブジェクトを作成し変数に代入
@@ -104,10 +102,25 @@ $('.js-getnow').on('click',function(){
               lng: position.coords.longitude
             };
             map.setCenter(pos);
-            //this.panTo(e.latLng); アニメーションで中心位置を移動
-    });
-    }
+        
+
+            if(nowmarker){
+                //console.log("無くします");
+                nowmarker.setMap(null);
+            }
+            nowmarker = new google.maps.Marker({
+                position:pos,
+                map:map,
+                icon:"https://maps.google.com/mapfiles/ms/micons/man.png",
+                animation:google.maps.Animation.BOUNCE
+            });
+
+
+        });//function閉じタグ
+    }//if閉タグ
+
 });
+
 
 
 
@@ -116,5 +129,18 @@ $('.js-getnow').on('click',function(){
 
 
 
+
+/*
+if(newmarker){
+    //console.log("無くします");
+    newmarker.setMap(null);
+}
+    newmarker = new google.maps.Marker({
+        position:pos,
+        map:map,
+        icon:"https://maps.google.com/mapfiles/ms/micons/man.png",
+        animation:google.maps.Animation.BOUNCE
+    });
+*/
 
 

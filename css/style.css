@@ -348,6 +348,24 @@ form .submit-btn {
   margin: auto;
   text-align: center; }
 
+.news {
+  margin: 50px auto 100px auto;
+  text-align: left;
+  width: 70%; }
+  .news h4 {
+    margin-bottom: 10px; }
+  .news li {
+    list-style: none;
+    font-size: 14px;
+    display: inline-block;
+    letter-spacing: 2px;
+    margin: 5px auto; }
+    @media screen and (max-width: 770px) {
+      .news li {
+        font-size: 10px; } }
+    .news li span {
+      background: linear-gradient(transparent 70%, #ff6 70%); }
+
 footer {
   height: 40px;
   width: 100%;
