@@ -1,7 +1,30 @@
 <?php
 
+
 require('db.php');
 require('function.php');
+/*
+date_default_timezone_set('Asia/Tokyo');
+$nowdate = strtotime("-3 day");//strtotimeでdatetimeの方を調べる
+echo "3日前";
+echo $nowdate;
+echo"\n";
+echo "1日";
+echo strtotime("1 day"), "\n";
+echo "2日";
+echo strtotime("2 day"), "\n";
+
+echo "1日と2日のの差は丸1日";
+echo 1591293379 - 1591206979;
+*/
+
+
+
+
+// (1970 年 1 月 1 日 00:00:00 UTC からの経過秒数) への変換を試みます
+//-1と-2を比べるとおよそ86414、1日の秒数になったよ
+
+//$nowdate = date("Y-m-d H:i:s",strtotime("-3 day"));//strtotimeでdatetimeの方を調べる
 
 if($_POST){
     $lat = $_POST['lat'];
@@ -22,8 +45,6 @@ if($_POST){
     try{
         $dbh = dbConnect();
         $sql = 'INSERT INTO locations (content,lat,lng,username,abouturl,category_id) VALUES (:content,:lat,:lng,:username,:abouturl,:category_id)';
-        //$stmt = $dbh->prepare($sql);//stmtでdbにsqlをセット
-        //debug('初回:'.print_r($stmt,true));
 
         $data = array(':content' => $content, ':username' => $username, ':lat' => $lat, ':lng' => $lng,':abouturl' => $abouturl,':category_id' => $category_id);
         $stmt = queryPost($dbh, $sql, $data);
@@ -62,7 +83,6 @@ if($_POST){
     <script src="./js/smooth-scroll.polyfills.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167420050-1"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -82,6 +102,8 @@ if($_POST){
     <nav>
         <a href="#thelocalmap">マップへ</a>
         <a href="#description">本サービスについて</a>
+ 
+
     </nav>
 </header>
 
@@ -183,6 +205,7 @@ if($_POST){
 <div class="news">
 <h4>NEWS</h4>
     <ul>
+        <li><span>2020/06/03</span> 1日医内に投稿されたマーカーに「NEW!」が出るようにしました。</li>
         <li><span>2020/05/25</span> 「現在地を取得」した際に人型マーカーが出るようにしました。</li>
         <li><span>2020/05/24</span> サービスを公開しました。</li>
     </ul>

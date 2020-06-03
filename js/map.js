@@ -2,10 +2,18 @@
 
 
 function initMap() {
-    //console.log("始める");
+    var now = new Date();
+    now = now.getTime();
+    //console.log("今の時間");
+    //console.log(now);
+
+    //var yesterday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+    //console.log(yesterday);
+
+
     map = new google.maps.Map(document.getElementById('map'), {
     center: center,
-    zoom: 19,
+    zoom: 16,
     gestureHandling:"greedy"
     });
  
@@ -14,6 +22,7 @@ function initMap() {
 for(var i = 0;i < allmarker.length; i++){
     //console.log(allmarker[i]['lat']);
     //console.log(allmarker[i]['lng']);
+    
     markerposition = new google.maps.LatLng(allmarker[i]['lat'],allmarker[i]['lng'])
     if(allmarker[i]['category_id'] === "1" ){
         icon = "https://maps.google.com/mapfiles/ms/micons/green-dot.png";
@@ -22,11 +31,33 @@ for(var i = 0;i < allmarker.length; i++){
     }else{
         icon = "https://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
     }
-    marker[i] = new google.maps.Marker({
-        position:markerposition,
-        map:map,
-        icon:icon
-    });
+
+    var s = (allmarker[i]['create_date']);
+    var thismarkertime = new Date(s).getTime();
+    //console.log(thismarkertime);
+    if(now - 86400000 <= thismarkertime){
+        console.log("これは新しい");
+        console.log(allmarker[i]['id']);
+        marker[i] = new google.maps.Marker({
+            position:markerposition,
+            map:map,
+            icon:icon,
+            label: {
+                text: "NEW!" ,
+                color: "red" ,
+                fontSize: "14px" ,
+                fontWeight: "liter"
+              }
+        });
+    }else{
+        marker[i] = new google.maps.Marker({
+            position:markerposition,
+            map:map,
+            icon:icon
+        });
+
+    }
+
     infoWindow[i] = new google.maps.InfoWindow({
         content:`
         <div class="marker-username">${allmarker[i]['username']}</div>
@@ -71,10 +102,10 @@ map.addListener('click',function (e){
         animation:google.maps.Animation.DROP
     });
     var response = newmarker.getPosition();//markerの場所を取得。フォームに設定
-    console.log(response.lat());
+    //console.log(response.lat());
     //document.getElementById('getlat').textContent = response.lat();
     document.getElementsByClassName('lat_val')[0].defaultValue = response.lat();
-    console.log(response.lng());
+    //console.log(response.lng());
     //document.getElementById('getlng').textContent = response.lng();
     document.getElementsByClassName('lng_val')[0].defaultValue = response.lng();
 
