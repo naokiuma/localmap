@@ -357,9 +357,9 @@ form .submit-btn {
   .news li {
     list-style: none;
     font-size: 14px;
-    display: inline-block;
+    display: block;
     letter-spacing: 2px;
-    margin: 5px auto; }
+    margin: 10px auto; }
     @media screen and (max-width: 770px) {
       .news li {
         font-size: 10px; } }
