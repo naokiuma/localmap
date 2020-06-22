@@ -336,8 +336,8 @@ img {
       font-size: 16px; } }
 
 .close-position {
-  position: absolute;
-  bottom: 15px;
+  position: fixed;
+  top: 15px;
   right: 15px; }
 
 .topmap {
