@@ -9,8 +9,6 @@ function initMap() {
 
     //var yesterday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
     //console.log(yesterday);
-
-
     map = new google.maps.Map(document.getElementById('map'), {
     center: center,
     zoom: 16,
@@ -65,10 +63,6 @@ for(var i = 0;i < allmarker.length; i++){
         </div><br>
         <a href="${allmarker[i]['abouturl']}" class="marker-link">${allmarker[i]['abouturl']}</a>
         `
-        
-        //'<div><a href="">' + allmarker[i]['content'] + '</a></div>'
-        
-        
     })
     markerEvent(i);//マーカーにイベントを追加
     state[i] = "close";//stateという配列にフラグを指定。デフォルトではfalse。
@@ -123,6 +117,7 @@ map.addListener('click',function (e){
     });
 });
 
+//-------------現在地取得の動き
 $('.js-getnow').on('click',function(){
     console.log("現在地取得");
     if(navigator.geolocation){
@@ -132,46 +127,44 @@ $('.js-getnow').on('click',function(){
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
+            console.log(pos);
             map.setCenter(pos);
-        
-
             if(nowmarker){
                 //console.log("無くします");
                 nowmarker.setMap(null);
             }
+            //現在地にマーカーを落とす
             nowmarker = new google.maps.Marker({
                 position:pos,
                 map:map,
                 icon:"https://maps.google.com/mapfiles/ms/micons/man.png",
                 animation:google.maps.Animation.BOUNCE
             });
-
-
         });//function閉じタグ
     }//if閉タグ
+    });
 
-});
+//ーーーーーーー投稿の位置に移動
 
-
-
+$(".each-marker").on('click',function(){
+    //クリックした箇所の配下の緯度経度取得。
+    //setCenterで使えるのは数字なので、数字変換する
+    temp_lng = Number($(this).children(".target-lng").text());
+    temp_lat = Number($(this).children(".target-lat").text());
+    //console.log(temp_lng);
+    //console.log(temp_lat);
+    var pos = { 
+        lat: temp_lat,
+        lng: temp_lng
+      };
+      //console.log(pos);
+      map.zoom = 16;
+      map.setCenter(pos);
+      $('.marker-titles-wrapper').animate( { width: 'toggle' }, 'slow' );
+     
+    });
 
 
 }//init閉じタグ
-
-
-
-
-/*
-if(newmarker){
-    //console.log("無くします");
-    newmarker.setMap(null);
-}
-    newmarker = new google.maps.Marker({
-        position:pos,
-        map:map,
-        icon:"https://maps.google.com/mapfiles/ms/micons/man.png",
-        animation:google.maps.Animation.BOUNCE
-    });
-*/
 
 

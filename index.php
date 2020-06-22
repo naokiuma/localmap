@@ -55,8 +55,8 @@ if($_POST){
         var_dump('エラー発生:' . $e->getMessage());
     }
   }
-
-  $search_rst = json_encode(callMarker());
+  $markers = array_reverse(callMarker());//php用
+  $search_rst = json_encode(callMarker());//js用
 
 ?>
 
@@ -80,6 +80,9 @@ if($_POST){
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167420050-1"></script>
+    <!--fontawasome-->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -161,8 +164,40 @@ if($_POST){
 <h2 class="map-read-text" id="thelocalmap">みんなの地図</h2>
 <p class="content-text">地図をクリックし、「内容」を入力し<br class="sp_br">「登録！」ボタンで地図に情報を登録できます。</p>
 <div class="topmap" id="map"></div>
+
+<!--マーカーをタイトルから取得----------------------------------->
+<div class="icon-wrapper  js-open-titles">
+    <span class="openclose-icon">
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+    </span>
+    <span class="openclose-icon-text">名前からマーカーをみる</span>
+</div>
+
 <button class="nowpos js-getnow">現在地に移動</button>
 <span class="now-span">※お使いのブラウザで位置情報アクセスを許可されている必要があります。</span>
+
+<div class="marker-titles-wrapper"><!--マーカー一覧-->
+<h3>マーカーを名前から確認します。</h3>
+    <div class="marker-titles">
+        <?php 
+        foreach($markers as $markertitle){
+           //print_r($markertitle);
+            echo "<div class='each-marker'>";
+            echo "<p>投稿者：".$markertitle["username"]."<br>";
+            echo "本文：".$markertitle["content"]."</p>";
+            echo "<span>緯度</span>：<span class='target-lng'>".$markertitle["lng"]."</span>";
+            echo "<span>経度</span>：<span class='target-lat'>".$markertitle["lat"]."</span><br>";
+            echo "</div>";
+            }
+        //print_r($markers);
+        ?>
+    </div>
+    <span class="openclose-icon close-position js-close-titles">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </span>
+</div>
+
+
 <section class="contents-wrapper">   
     <div class="marker-position">
         <form action="" method="post">
@@ -201,6 +236,7 @@ if($_POST){
 <div class="news">
 <h4>NEWS</h4>
     <ul>
+        <li><span>2020/06/23</span> 既存のマーカーの場所を名前から確認できるようになりました。</li>
         <li><span>2020/06/03</span> 1日以内に投稿されたマーカーに「NEW!」が出るようにしました。</li>
         <li><span>2020/05/25</span> 「現在地を取得」した際に人型マーカーが出るようにしました。</li>
         <li><span>2020/05/24</span> サービスを公開しました。</li>
@@ -215,8 +251,8 @@ if($_POST){
     <script>
     //phpから受け取ったDBデータ
     var allmarker = <?php echo $search_rst; ?>;
-    //console.log("受け取ったデータ");
-    //console.log(allmarker);
+    console.log("受け取ったデータ");
+    console.log(allmarker);
     
     var map;
     var marker = [];//既存マーカー
@@ -234,12 +270,24 @@ if($_POST){
     $('.js-howto-show').on("click", function() {
         $('.about').slideToggle();
     });
+
+    //マーカーをタイトルから検索クリック時の動き
+    $('.js-open-titles').on("click",function(){
+        console.log("発火");
+        $('.marker-titles-wrapper').animate( { width: 'toggle' }, 'slow' );
+    })
+
+    $('.js-close-titles').on("click",function(){
+        console.log("クローズ");
+        $('.marker-titles-wrapper').animate( { width: 'toggle' }, 'slow' );
+    })
+
+
+
     </script> 
 
 
     <script type="text/javascript" src="./js/map.js"></script>
-
-
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdMGovP86OVf0rhbzezWKGV5Z32TMxt3Y&callback=initMap" async defer></script>
 
     
