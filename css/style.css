@@ -419,6 +419,13 @@ form .getlng-num {
     form .getlng-num {
       font-size: 12px; } }
 
+form .choice-category {
+  width: 80%;
+  margin: auto; }
+  form .choice-category img {
+    width: 30px;
+    height: 30px; }
+
 form .category_btn {
   width: 20px; }
 

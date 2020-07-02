@@ -106,7 +106,6 @@ if($_POST){
     </nav>
 </header>
 
-
 <section class="hero">
     <h2>好きな場所をシェアしよう。</h2>
     <div class="hero-wrapper">
@@ -187,6 +186,7 @@ if($_POST){
             echo "本文：".$markertitle["content"]."</p>";
             echo "<span>緯度</span>：<span class='target-lng'>".$markertitle["lng"]."</span>";
             echo "<span>経度</span>：<span class='target-lat'>".$markertitle["lat"]."</span><br>";
+            echo "<p><a href='https://www.google.com/maps?q=".$markertitle["lat"].",".$markertitle["lng"]."'>Googleマップで開く</a></p>";
             echo "</div>";
             }
         //print_r($markers);
@@ -198,6 +198,7 @@ if($_POST){
 </div>
 
 
+
 <section class="contents-wrapper">   
     <div class="marker-position">
         <form action="" method="post">
@@ -206,9 +207,14 @@ if($_POST){
             <input class="lat_val" type="text" name="lat" value="" required>
             <div>経度：<span id="getlng" class="getlng-num"></span><span class="need">※必須</span></div>
             <input class="lng_val" type="text" name="lng" value="" required><br>
-            <input type="radio" class="category_btn" name="category_id" value="1" required checked>のんびり
-            <input type="radio" class="category_btn" name="category_id" value="2">たべもの
-            <input type="radio" class="category_btn" name="category_id" value="3">あそぶ
+
+            <div class="choice-category">
+            <img id="js-change-catgeory" src="https://maps.google.com/mapfiles/ms/micons/green-dot.png" alt="">
+                <input type="radio" class="category_btn" name="category_id" value="1" required checked>のんびり
+                <input type="radio" class="category_btn" name="category_id" value="2">たべもの
+                <input type="radio" class="category_btn" name="category_id" value="3">あそぶ
+            </div>
+
             <div>投稿者名</div>
             <input name="username" type="text" value="名無しさん">
             <div>内容<span class="need">※必須</span></div>
@@ -282,6 +288,44 @@ if($_POST){
         $('.marker-titles-wrapper').animate( { width: 'toggle' }, 'slow' );
     })
 
+    //読み込み時に最初に選択しているカテゴリー
+    $(document).ready(function(){
+        const checked = $('input:radio[name="category_id"]:checked').val();
+        console.log(checked);
+
+    });
+
+    $('input:radio[name="category_id"]').change(function(){
+        let changed = $('input:radio[name="category_id"]:checked').val();
+        console.log(changed);
+        if(changed == 1){
+            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/green-dot.png');
+        }else if(changed == 2){
+            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/blue-dot.png');
+        }else{
+            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/yellow-dot.png');
+        }
+    })
+
+    /*
+    $(function(){
+        function watchcategory(){
+            let changed = $('input:radio[name="category_id"]:checked').val();
+        console.log(changed);
+        if(changed == 1){
+            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/green-dot.png');
+        }else if(changed == 2){
+            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/blue-dot.png');
+        }else{
+            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/yellow-dot.png');
+        }
+
+        }
+
+    })
+    */
+
+    
 
 
     </script> 
