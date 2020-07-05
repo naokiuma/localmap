@@ -186,7 +186,7 @@ if($_POST){
             echo "本文：".$markertitle["content"]."</p>";
             echo "<span>緯度</span>：<span class='target-lng'>".$markertitle["lng"]."</span>";
             echo "<span>経度</span>：<span class='target-lat'>".$markertitle["lat"]."</span><br>";
-            echo "<p><a href='https://www.google.com/maps?q=".$markertitle["lat"].",".$markertitle["lng"]."'>Googleマップで開く</a></p>";
+            echo "<p><a class='togoogle' href='https://www.google.com/maps?q=".$markertitle["lat"].",".$markertitle["lng"]."'>Googleマップで開く</a></p>";
             echo "</div>";
             }
         //print_r($markers);
@@ -242,7 +242,7 @@ if($_POST){
 <div class="news">
 <h4>NEWS</h4>
     <ul>
-        <li><span>2020/06/23</span> 既存のマーカーの場所を名前から確認できるようになりました。</li>
+        <li><span>2020/06/23</span> 既存のマーカーの場所を名前から確認できるようになりました。「名前からマーカーを見る」をご確認ください。</li>
         <li><span>2020/06/03</span> 1日以内に投稿されたマーカーに「NEW!」が出るようにしました。</li>
         <li><span>2020/05/25</span> 「現在地を取得」した際に人型マーカーが出るようにしました。</li>
         <li><span>2020/05/24</span> サービスを公開しました。</li>
@@ -292,6 +292,13 @@ if($_POST){
     $(document).ready(function(){
         const checked = $('input:radio[name="category_id"]:checked').val();
         console.log(checked);
+        if(checked == 1){
+            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/green-dot.png');
+        }else if(checked == 2){
+            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/blue-dot.png');
+        }else{
+            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/yellow-dot.png');
+        }
 
     });
 
@@ -306,26 +313,6 @@ if($_POST){
             $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/yellow-dot.png');
         }
     })
-
-    /*
-    $(function(){
-        function watchcategory(){
-            let changed = $('input:radio[name="category_id"]:checked').val();
-        console.log(changed);
-        if(changed == 1){
-            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/green-dot.png');
-        }else if(changed == 2){
-            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/blue-dot.png');
-        }else{
-            $("#js-change-catgeory").attr('src','https://maps.google.com/mapfiles/ms/micons/yellow-dot.png');
-        }
-
-        }
-
-    })
-    */
-
-    
 
 
     </script> 

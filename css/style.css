@@ -278,6 +278,11 @@ img {
   .each-marker:hover {
     background: #ff6;
     cursor: pointer; }
+  .each-marker .togoogle {
+    color: black;
+    text-decoration: none; }
+    .each-marker .togoogle:hover {
+      color: skyblue; }
   @media screen and (max-width: 770px) {
     .each-marker {
       width: 100%; } }
@@ -422,9 +427,16 @@ form .getlng-num {
 form .choice-category {
   width: 80%;
   margin: auto; }
+  @media screen and (max-width: 770px) {
+    form .choice-category {
+      font-size: 12px; } }
   form .choice-category img {
     width: 30px;
-    height: 30px; }
+    height: 30px;
+    animation: backInDown;
+    /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s;
+    /* don't forget to set a duration! */ }
 
 form .category_btn {
   width: 20px; }
