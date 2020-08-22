@@ -3,24 +3,6 @@
 
 require('db.php');
 require('function.php');
-/*
-date_default_timezone_set('Asia/Tokyo');
-$nowdate = strtotime("-3 day");//strtotimeでdatetimeの方を調べる
-echo "3日前";
-echo $nowdate;
-echo"\n";
-echo "1日";
-echo strtotime("1 day"), "\n";
-echo "2日";
-echo strtotime("2 day"), "\n";
-
-echo "1日と2日のの差は丸1日";
-echo 1591293379 - 1591206979;
-*/
-// (1970 年 1 月 1 日 00:00:00 UTC からの経過秒数) への変換を試みます
-//-1と-2を比べるとおよそ86414、1日の秒数になったよ
-
-//$nowdate = date("Y-m-d H:i:s",strtotime("-3 day"));//strtotimeでdatetimeの方を調べる
 
 if($_POST){
     $lat = $_POST['lat'];
@@ -32,10 +14,10 @@ if($_POST){
     if(empty($abouturl)) $abouturl = "";
     $abouturl = $_POST['abouturl'];
     $category_id = $_POST['category_id'];
-    debug($lat);
-    debug($lng);
-    debug($content);
-    debug($category_id);
+    //debug($lat);
+    //debug($lng);
+    //debug($content);
+    //debug($category_id);
 
     //例外処理
     try{
