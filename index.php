@@ -301,8 +301,7 @@ if($_POST){
 
 
     <script type="text/javascript" src="./js/map.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdMGovP86OVf0rhbzezWKGV5Z32TMxt3Y&callback=initMap" async defer></script>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSNU1IHUop9GcGA5LjPSfeTQ7x8MXTdUA&callback=initMap" async defer></script>
     
 </div>
 </body>
